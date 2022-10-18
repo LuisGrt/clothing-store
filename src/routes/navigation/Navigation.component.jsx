@@ -13,7 +13,7 @@ const Navigation = () => {
             <Logo className="logo" />
           </Link>
           <div className="links">
-            <Link className="link" to="/login">
+            <Link className="link" to="/auth">
               Sign In
             </Link>
           </div>

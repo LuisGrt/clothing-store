@@ -3,15 +3,11 @@ import {ChangeEvent, FormEvent, useState} from 'react';
 import {createUserDocumentFromAuth, signUpUserWithEmailAndPassword} from '../../utils/firebase.utils';
 import FormInput from '../form-input/FormInput.component';
 import Button from '../button/Button.component';
+import {AuthCredentials} from '../../models/AuthCredentials';
 
 import './SignUpForm.styles.scss';
 
-export interface SignUpCredentials {
-  email: string;
-  password: string;
-}
-
-interface SignUpFields extends SignUpCredentials {
+interface SignUpFields extends AuthCredentials {
   displayName: string;
   confirmPassword: string;
 }
@@ -78,7 +74,7 @@ const SignUpForm = () => {
 
         <FormInput
           label="Email"
-          id="email"
+          id="email2"
           name="email"
           type="email"
           onChange={handleChange}
@@ -87,7 +83,7 @@ const SignUpForm = () => {
 
         <FormInput
           label="Password"
-          id="password"
+          id="password2"
           name="password"
           type="password"
           onChange={handleChange}
