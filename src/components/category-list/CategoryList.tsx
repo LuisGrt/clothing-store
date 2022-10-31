@@ -1,7 +1,7 @@
-import CategoryItem from '../category-item/CategoryItem.component';
+import CategoryItem from '../category-item/CategoryItem';
 import React from 'react';
 
-import './CategoriesList.styles.scss';
+import './CategoryList.scss';
 
 interface Category {
   id: number;
@@ -9,7 +9,7 @@ interface Category {
   imageUrl: string;
 }
 
-const CategoriesList = () => {
+const CategoryList = () => {
   const categories: Category[] = [
     {
       'id': 1,
@@ -47,4 +47,4 @@ const CategoriesList = () => {
   );
 };
 
-export default CategoriesList;
+export default CategoryList;

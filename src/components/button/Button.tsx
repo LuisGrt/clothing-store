@@ -1,4 +1,4 @@
-import './Button.styles.scss';
+import './Button.scss';
 
 export interface ButtonProps {
   buttonStyle: 'default' | 'google' | 'inverted';

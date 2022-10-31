@@ -1,5 +1,5 @@
 import React from 'react';
-import './CategoryItem.styles.scss';
+import './CategoryItem.scss';
 
 interface CategoryItemProps {
   title: string;

@@ -1,6 +1,6 @@
 import {InputHTMLAttributes} from 'react';
 
-import './FormInput.styles.scss';
+import './FormInput.scss';
 
 export interface FormInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'autoComplete'> {
   label?: string | undefined;

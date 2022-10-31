@@ -1,15 +1,14 @@
 import {AuthCredentials} from '../../models/AuthCredentials';
 import {ChangeEvent, FormEvent, useState} from 'react';
-import FormInput from '../form-input/FormInput.component';
-import Button from '../button/Button.component';
+import FormInput from '../form-input/FormInput';
+import Button from '../button/Button';
 import {
-  createUserDocumentFromAuth,
   signInUserWithEmailAndPassword,
   signInWithGooglePopup
 } from '../../utils/firebase.utils';
 import {FirebaseError} from 'firebase/app';
 
-import './SignInForm.styles.scss';
+import './SignInForm.scss';
 
 const initialFormState: AuthCredentials = {
   email: '',
@@ -43,11 +42,7 @@ const SignInForm = () => {
 
   const loginWithGoogle = async () => {
     try {
-      const response = await signInWithGooglePopup();
-
-      if (response.user) {
-        await createUserDocumentFromAuth(response.user);
-      }
+      await signInWithGooglePopup();
     } catch (error: any) {
       if (error instanceof FirebaseError && error.code.includes('closed-by-user')) {
         return alert('Authentication cancelled by the user.');

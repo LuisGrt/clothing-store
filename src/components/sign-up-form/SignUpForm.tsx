@@ -1,11 +1,11 @@
 import {FirebaseError} from 'firebase/app';
 import {ChangeEvent, FormEvent, useState} from 'react';
 import {createUserDocumentFromAuth, signUpUserWithEmailAndPassword} from '../../utils/firebase.utils';
-import FormInput from '../form-input/FormInput.component';
-import Button from '../button/Button.component';
+import FormInput from '../form-input/FormInput';
+import Button from '../button/Button';
 import {AuthCredentials} from '../../models/AuthCredentials';
 
-import './SignUpForm.styles.scss';
+import './SignUpForm.scss';
 
 interface SignUpFields extends AuthCredentials {
   displayName: string;
@@ -38,8 +38,7 @@ const SignUpForm = () => {
       const response = await signUpUserWithEmailAndPassword({email, password});
 
       if (response.user) {
-        const ref = await createUserDocumentFromAuth({...response.user, displayName});
-        console.log(ref);
+        await createUserDocumentFromAuth({...response.user, displayName});
       }
 
       resetForm();
