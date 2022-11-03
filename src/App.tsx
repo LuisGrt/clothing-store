@@ -4,6 +4,7 @@ import {Route, Routes} from 'react-router-dom';
 import Login from './routes/authentication/Authentication';
 import Navigation from './routes/navigation/Navigation';
 import Shop from './routes/shop/Shop';
+import Checkout from './routes/checkout/Checkout';
 
 const App = () => (
   <Routes>
@@ -11,6 +12,7 @@ const App = () => (
       <Route index element={<Home />}/>
       <Route path="auth" element={<Login />}/>
       <Route path="shop" element={<Shop />}></Route>
+      <Route path="checkout" element={<Checkout />}></Route>
     </Route>
   </Routes>
 );
