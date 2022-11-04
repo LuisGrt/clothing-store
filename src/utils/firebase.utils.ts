@@ -10,10 +10,12 @@ import {
   signOut,
   User as FirebaseUser
 } from 'firebase/auth';
-import {doc, getDoc, getFirestore, setDoc} from 'firebase/firestore';
+import {collection, doc, getDoc, getDocs, getFirestore, query, setDoc} from 'firebase/firestore';
 import {User} from '../models/User';
 import {AuthCredentials} from '../models/AuthCredentials';
 import {CurrentUser} from '../contexts/User';
+import {CategoryModel} from '../models/Category';
+import {ProductsByCategory} from '../models/Product';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -73,3 +75,15 @@ export const signInUserWithEmailAndPassword = async (credentials: AuthCredential
 export const signOutUser = async () => signOut(auth);
 
 export const onAuthStateChangeListener = (callback: (user: CurrentUser) => void) => onAuthStateChanged(auth, callback);
+
+export const getCategories = async (): Promise<ProductsByCategory> => {
+  const collectionRef = collection(db, 'categories');
+  const q = query(collectionRef);
+
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.reduce<ProductsByCategory>((acc: ProductsByCategory, item) => {
+    const {title, items} = item.data() as CategoryModel;
+    acc[title.toLowerCase()] = items;
+    return acc;
+  }, {});
+};

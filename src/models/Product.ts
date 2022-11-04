@@ -4,3 +4,7 @@ export interface Product {
   imageUrl: string;
   price: number;
 }
+
+export interface ProductsByCategory {
+  [categoryName: string]: Product[];
+}
